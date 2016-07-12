@@ -1,0 +1,8 @@
+yes
+no
+continue
+next
+yep
+yeah
+yup
+okay

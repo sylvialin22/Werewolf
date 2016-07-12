@@ -1,3 +1,6 @@
 EndIntent End game
+EndIntent Exit
+EndIntent Game over
 
 NumberIntent There are {Number} of players
+NumberIntent {Number}

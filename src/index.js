@@ -27,21 +27,35 @@ exports.handler = function( event, context ) {
                 theNumbers  = event.request.intent.slots.Number.value;
 
                 if (!sessionAttributes.myList)  {sessionAttributes.myList = []; }
-                  for(i = 1; i <= theNumbers; i++){
-                    sessionAttributes.myList.push(i);
 
+                  for(i = 1; i <= theNumbers; i++){
+                      var player={
+                      number:i, health:"alive",
+                    };
+                    sessionAttributes.myList.push(player);
                   }
-                say = "There are"+theNumbers+"players. Number one and two are werewolves. Number three is the doctor. Number four is the seer. The remaining players are the villagers.";
+                say = "There are "+ theNumbers +" players. The joker card is the death card. If you find this card if front of you, you have been killed in the night. Hopefully the villagers will avenge your death. Number one and two are werewolves. Number three is the doctor. Number four is the fortuneteller. The remaining players are the villagers. Would you like to continue?";
 
             } else {
                 say = "you can say things like, five players in the game";
             }
 
-        } else if (IntentName === "EndIntent") {
-            say = "We see a " + sessionAttributes.myList.toString() + " looking at us.  Thank you for playing!";
-            endsession = true;
+          } else if (IntentName === "ContinueIntent") {
+                if(event.request.intent.slots.Continue.value){
+                  say = "Everyone fall asleep. Werewolves, wake up. You have thirty seconds to place the death card in front of who you want to kill. ten nine eight seven six five four three two one. Werewolves, close your eyes. Doctor, wake up. If you want to save this person, move the death card to the middle of the circle. You have fifteen seconds. ten nine eight seven six five four three two one. Doctor, close your eyes. Fortuneteller, wake up. Choose one card to look at. You have fifteen seconds.ten nine eight seven six five four three two one. Fortuneteller, close your eyes."
 
-        }
+                } else {
+                    say = "you can say things like, five players in the game";
+                }
+
+          } else if (IntentName === "EndIntent") {
+              var s = "";
+              for (var i = 0; i < sessionAttributes.myList.length ; i++){
+                  s += "Number " + sessionAttributes.myList[i].number + " is "+ sessionAttributes.myList[i].health+". ";
+              }
+              say = s + "Good game!";
+              endsession = true;
+          }
     }
 
     var response = {

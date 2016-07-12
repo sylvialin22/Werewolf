@@ -7,11 +7,20 @@
         {
           "name":"Number",
           "type":"LIST_OF_NUMBERS"
-        },
+        }
       ]
     },
     {
       "intent": "EndIntent"
+    },
+    {
+      "intent": "ContinueIntent",
+      "slots":[
+        {
+          "name":"Continue",
+          "type":"LIST_OF_CONTINUE"
+        }
+      ]
     }
 
   ]
