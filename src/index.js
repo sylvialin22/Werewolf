@@ -20,21 +20,21 @@ exports.handler = function( event, context ) {
     } else {
         var IntentName = event.request.intent.name;
 
-        if (IntentName === "ISeeIntent") {
+        if (IntentName === "NumberIntent") {
 
-            if(event.request.intent.slots.Color.value && event.request.intent.slots.Animal.value) {
+            if(event.request.intent.slots.Number.value) {
 
-                myColor  = event.request.intent.slots.Color.value;
-                myAnimal = event.request.intent.slots.Animal.value;
+                theNumbers  = event.request.intent.slots.Number.value;
 
                 if (!sessionAttributes.myList)  {sessionAttributes.myList = []; }
+                  for(i = 1; i <= theNumbers; i++){
+                    sessionAttributes.myList.push(i);
 
-                sessionAttributes.myList.push(myColor + " " + myAnimal);
-
-                say = myColor + " " + myAnimal + ", " + myColor + " " + myAnimal +  ", what do you see? ";
+                  }
+                say = "There are"+theNumbers+"players. Number one and two are werewolves. Number three is the doctor. Number four is the seer. The remaining players are the villagers.";
 
             } else {
-                say = "you can say things like, I see a red bird looking at me";
+                say = "you can say things like, five players in the game";
             }
 
         } else if (IntentName === "EndIntent") {

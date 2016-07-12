@@ -2,16 +2,12 @@
 {
   "intents": [
     {
-      "intent": "ISeeIntent",
+      "intent": "NumberIntent",
       "slots":[
         {
-          "name":"Color",
-          "type":"LIST_OF_COLORS"
+          "name":"Number",
+          "type":"LIST_OF_NUMBERS"
         },
-        {
-          "name":"Animal",
-          "type":"LIST_OF_ANIMALS"
-        }
       ]
     },
     {
