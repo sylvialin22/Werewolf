@@ -15,7 +15,7 @@ exports.handler = function( event, context ) {
     }
 
     if (event.request.type === "LaunchRequest") {
-        say = "Welcome! Brown bear, brown bear, what do you see?";
+        say = "Welcome to the game, Werewolf. How many players are in the game?";
 
     } else {
         var IntentName = event.request.intent.name;
